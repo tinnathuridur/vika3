@@ -39,3 +39,6 @@ HEADERS  += mainwindow.h \
     ui/consoleui.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    recources.qrc
