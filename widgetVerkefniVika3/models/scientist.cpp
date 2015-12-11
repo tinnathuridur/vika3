@@ -1,4 +1,4 @@
-#include "scientist.h"
+#include "models/scientist.h"
 #include "utilities/utils.h"
 #include "utilities/constants.h"
 

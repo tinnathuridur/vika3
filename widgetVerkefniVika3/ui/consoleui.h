@@ -1,9 +1,9 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
 
-#include "scientistservice.h"
-#include "computerservice.h"
-#include "linkservice.h"
+#include "services/scientistservice.h"
+#include "services/computerservice.h"
+#include "services/linkservice.h"
 
 /**
  * @brief Holds commands that are available in the UI

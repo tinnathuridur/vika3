@@ -1,4 +1,4 @@
-#include "scientistrepository.h"
+#include "repositories/scientistrepository.h"
 #include "utilities/utils.h"
 #include "utilities/constants.h"
 

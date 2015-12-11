@@ -1,4 +1,4 @@
-#include "computer.h"
+#include "models/computer.h"
 #include "utilities/constants.h"
 
 using namespace std;
