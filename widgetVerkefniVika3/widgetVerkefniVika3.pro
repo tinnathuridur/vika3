@@ -4,11 +4,17 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core
+QT       -= gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = widgetVerkefniVika3
+
+CONFIG -= app_bundle
+CONFIG += C++11
+
 TEMPLATE = app
 
 
