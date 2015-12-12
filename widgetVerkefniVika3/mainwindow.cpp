@@ -46,12 +46,12 @@ MainWindow::~MainWindow()
     displayScientists(scientists);
 }*/
 
-void MainWindow::on_action_addScientist_triggered()
+void MainWindow::on_action_AddScientist_triggered()
 {
     //tryggvi
 }
 
-void MainWindow::on_action_deleteScientist_triggered()
+void MainWindow::on_action_DeleteScientist_triggered()
 {
     /*//tinna
     int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
@@ -104,3 +104,4 @@ void MainWindow::on_action_Search_triggered()
 {
     //emil
 }
+

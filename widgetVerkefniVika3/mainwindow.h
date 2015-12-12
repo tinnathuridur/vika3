@@ -19,9 +19,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_action_addScientist_triggered();
+    void on_action_AddScientist_triggered();
 
-    void on_action_deleteScientist_triggered();
+    void on_action_DeleteScientist_triggered();
 
     void on_table_Scientist_clicked(const QModelIndex &index);
 
