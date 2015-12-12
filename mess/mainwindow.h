@@ -38,12 +38,12 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    /*std::vector<Scientist> currentlyDisplayedScientists;
+    std::vector<Scientist> currentlyDisplayedScientists;
 
     void displayAllScientists();
     void displayScientists(std::vector<Scientist> scientists);
 
-    ScientistService scientistService;*/
+    ScientistService scientistService;
 
 };
 

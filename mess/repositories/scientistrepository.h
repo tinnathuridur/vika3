@@ -19,7 +19,7 @@ public:
      * @brief getAllScientists fetches all scientists from the database
      * @return a vector containing all scientists in the database
      */
-    std::vector<Scientist> getAllScientists();
+    std::vector<Scientist> getAllScientists(std::string orderBy, bool orderAscending);
 
     /**
      * @brief searchForScientists fetches all scientists from the database and filters them on searchTerm
@@ -34,7 +34,6 @@ public:
      * @return true if it was a success, false if it was a failure
      */
     bool addScientist(Scientist scientist);
-    bool deleteScientist(Scientist scientist);
 
 private:
 

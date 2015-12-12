@@ -47,7 +47,7 @@ vector<Computer> ComputerRepository::queryComputers(QString sqlQuery)
     return computers;
 }
 
-/*vector<Computer> ComputerRepository::getAllComputers(string orderBy, bool orderAscending)
+vector<Computer> ComputerRepository::getAllComputers(string orderBy, bool orderAscending)
 {
     string ascending = ((orderAscending) ? "ASC" : "DESC");
 
@@ -55,7 +55,7 @@ vector<Computer> ComputerRepository::queryComputers(QString sqlQuery)
     sqlQuery << "SELECT * FROM Computers ORDER BY " << orderBy << " " << ascending;
 
     return queryComputers(QString::fromStdString(sqlQuery.str()));
-}*/
+}
 
 vector<Computer> ComputerRepository::searchForComputers(string searchTerm)
 {

@@ -53,16 +53,15 @@ vector<Scientist> ScientistRepository::queryScientists(QString sqlQuery)
     return scientists;
 }
 
-/*vector<Scientist> ScientistRepository::getAllScientists()
+vector<Scientist> ScientistRepository::getAllScientists(string orderBy, bool orderAscending)
 {
-//ruglaði í þessu...það var eins og í computerRepository -tinna
+    string ascending = ((orderAscending) ? "ASC" : "DESC");
 
     stringstream sqlQuery;
-    sqlQuery << "SELECT * FROM Scientists";
+    sqlQuery << "SELECT * FROM Scientists ORDER BY " << orderBy << " " << ascending;
 
     return queryScientists(QString::fromStdString(sqlQuery.str()));
-}*/
-
+}
 
 vector<Scientist> ScientistRepository::searchForScientists(string searchTerm)
 {
@@ -103,21 +102,6 @@ bool ScientistRepository::addScientist(Scientist scientist)
     db.close();
 
     return true;
-}
-//breytti þessu, that het removeScientist
-bool ScientistRepository::deleteScientist(Scientist scientist)
-{
-    db.open();
-
-    QSqlQuery query(db);
-
-    stringstream sqlQuery;
-    sqlQuery << "DELETE FROM Scientists WHERE id = " << scientist.getId();
-
-    bool success = query.exec(QString::fromStdString(sqlQuery.str()));
-
-    db.close();
-    return success;
 }
 
 std::vector<Computer> ScientistRepository::queryComputersByScientist(Scientist scientist)

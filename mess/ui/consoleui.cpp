@@ -306,7 +306,7 @@ void ConsoleUI::displayAddScientistComputerMenu()
 
 void ConsoleUI::displayAllScientists()
 {
-    vector<Scientist> scientists = scientistService.getAllScientists();
+    vector<Scientist> scientists = scientistService.getAllScientists(sortScientistsBy, sortScientistsAscending);
 
     displayScientists(scientists);
 

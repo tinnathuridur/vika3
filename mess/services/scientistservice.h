@@ -18,7 +18,7 @@ public:
      * @param orderAscending Should the list be sorted in ascending order?
      * @return a vector containing all scientists in the repository
      */
-    std::vector<Scientist> getAllScientists();
+    std::vector<Scientist> getAllScientists(std::string orderBy, bool orderAscending);
 
     /**
      * @brief searchForScientists fetches all scientists filtered on searchTerm
@@ -33,8 +33,6 @@ public:
      * @return true if it was a success, false if it was a failure
      */
     bool addScientist(Scientist scientist);
-
-    bool deleteScientist(Scientist scientist);
 private:
     ScientistRepository scientistRepo;
 };
