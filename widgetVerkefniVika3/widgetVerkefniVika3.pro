@@ -46,5 +46,10 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
+INCLUDEPATH += models \
+    repositories \
+    services \
+    ui
+
 RESOURCES += \
     recources.qrc
