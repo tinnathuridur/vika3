@@ -61,7 +61,7 @@ void MainWindow::on_action_AddScientist_triggered()
 
 void MainWindow::on_action_DeleteScientist_triggered()
 {
-    /*//tinna
+    //tinna
     int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
     Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
@@ -78,24 +78,25 @@ void MainWindow::on_action_DeleteScientist_triggered()
     else
     {
         //cout << "There was an error, please try again";
-    }*/
+    }
 }
 
 void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
-    //ui->action_DeleteScientist->setEnabled(true);
+    ui->action_DeleteScientist->setEnabled(true);
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
 {
     //tinna
-    //ui->action_DeleteComputer->setEnabled(true);
+    ui->action_DeleteComputer->setEnabled(true);
 }
 
 void MainWindow::on_table_Join_clicked(const QModelIndex &index)
 {
     //tinna
+    //viljum við að fólk geti breytt þessari töflu?
 }
 
 void MainWindow::on_action_Add_computer_triggered()
@@ -115,6 +116,6 @@ void MainWindow::on_action_Search_triggered()
 
 void MainWindow::on_table_Scientists_clicked(const QModelIndex &index)
 {
-
+    //af hverju er þetta aftur?
 }
 
