@@ -199,18 +199,18 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             type = computerType::other;
         }
 
-
+        //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
         success = computerService.addComputer(Computer(name.toStdString(), type, yearBuilt.toInt()));
 
 
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
         {
-            ui->errorLabel_Scientist->setText("UnSuccsess");
+            ui->errorLabel_Computer->setText("UnSuccsess");
         }
         else
         {
-            ui->errorLabel_Scientist->setText("Succsess");
+            ui->errorLabel_Computer->setText("Succsess");
         }
 
 
