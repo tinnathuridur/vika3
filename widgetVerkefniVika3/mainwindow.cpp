@@ -107,6 +107,23 @@ void MainWindow::on_action_Add_computer_triggered()
 void MainWindow::on_action_Delete_computer_triggered()
 {
     //tinna geyma
+    /*int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
+
+    Scientist currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+    bool success = computerService.deleteComputer(currentlySelectedComputer);
+
+    if(success)
+    {
+        //ui->input_filter_students->setText("");
+        displayAllComputers();
+
+        ui->action_DeleteComputer->setEnabled(false);
+    }
+    else
+    {
+        //cout << "There was an error, please try again";
+    }*/
 }
 
 void MainWindow::on_action_Search_triggered()
