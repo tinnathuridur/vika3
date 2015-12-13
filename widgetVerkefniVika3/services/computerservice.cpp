@@ -1,5 +1,7 @@
 #include "services/computerservice.h"
 
+#include <algorithm>
+
 ComputerService::ComputerService()
 {
 

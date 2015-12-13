@@ -3,6 +3,7 @@
 
 #include <QtSql>
 #include <vector>
+#include <string>
 #include "models/computer.h"
 
 /**
