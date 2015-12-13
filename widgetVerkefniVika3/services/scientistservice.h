@@ -33,6 +33,8 @@ public:
      * @return true if it was a success, false if it was a failure
      */
     bool addScientist(Scientist scientist);
+    bool deleteScientist(Scientist scientist);
+
 private:
     ScientistRepository scientistRepo;
 };
