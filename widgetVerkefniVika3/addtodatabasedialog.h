@@ -5,6 +5,7 @@
 
 #include "scientistservice.h"
 #include "computerservice.h"
+#include "linkservice.h"
 
 namespace Ui {
 class AddToDatabaseDialog;
@@ -32,6 +33,7 @@ private:
 
     ScientistService scientistService;
     ComputerService computerService;
+    LinkService linkService;
 };
 
 #endif // ADDTODATABASEDIALOG_H

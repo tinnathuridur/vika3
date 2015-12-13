@@ -5,6 +5,7 @@
 
 #include "scientistservice.h"
 #include "computerservice.h"
+#include "linkservice.h"
 
 AddToDatabaseDialog::AddToDatabaseDialog(QWidget *parent) :
     QDialog(parent),
@@ -216,7 +217,53 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
 
     }
     else if(ui->radioButton_Join->isChecked()){
+        bool success = false;
+
+        QString scientistID = ui->lineEdit_Join_Scientist->text();
+        QString computerID = ui->lineEdit_Join_Computer->text();
+
+        //Athugar hvort eitthvað hafi verið skilið eftir autt
+        bool thereWasAnError = false;
+        if(scientistID.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must input a scientist ID!");
+            thereWasAnError = true;
+        }
+
+        if(computerID.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must input a Computer ID!");
+            thereWasAnError = true;
+        }
+
+        if(thereWasAnError == true)
+        {
+            return;
+        }
+
+
+        //Spyr hvort þú sért viss að þú viljir skrifa í database
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+        if(answer == QMessageBox::No)
+        {
+            return;
+        }
+
+        //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
+        success = linkService.addLink(scientistID.toStdString(), computerID.toStdString());
+
+
+        //Skilar villuskilaboðum ef ekki tókst að skrifa í database
+        if(success == false)
+        {
+            ui->errorLabel_Join->setText("UnSuccsess");
+        }
+        else
+        {
+            ui->errorLabel_Join->setText("Succsess");
+        }
+
+
 
     }
 }
