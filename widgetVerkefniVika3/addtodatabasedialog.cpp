@@ -72,7 +72,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
     if(ui->radioButton_Scientist->isChecked())
     {
         enum sexType sex;
-        bool yearDiedisEmpty;
+        bool yearDiedisEmpty = false; //qt var að kvarta, frumstillti hana sem false (tinna)
         bool success = false;
 
         QString name = ui->lineEdit_Scientist_Name->text();
@@ -117,7 +117,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             sex = sexType::female;
         }
 
-        //Útaf því að fólk má enþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
+        //Útaf því að fólk má ennþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
 
         if(yearDied.isEmpty())
         {
