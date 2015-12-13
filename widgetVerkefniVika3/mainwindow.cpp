@@ -3,6 +3,7 @@
 #include "models/computer.h"
 #include "models/scientist.h"
 #include "services/scientistservice.h"
+#include "addtodatabasedialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,6 +50,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_AddScientist_triggered()
 {
     //tryggvi
+    AddToDatabaseDialog addToDatabaseDialog;
+    int addToDatabaseReturnValue = addToDatabaseDialog.exec();
 }
 
 void MainWindow::on_action_DeleteScientist_triggered()
