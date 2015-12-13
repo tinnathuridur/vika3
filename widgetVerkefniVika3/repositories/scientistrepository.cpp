@@ -104,6 +104,31 @@ bool ScientistRepository::addScientist(Scientist scientist)
     return true;
 }
 
+bool ScientistRepository::deleteScientist(Scientist scientist)
+{
+    //nytt (tinna)
+    db.open();
+
+    if (!db.isOpen())
+    {
+        return false;
+    }
+
+    QSqlQuery query(db);
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM Scientists WHERE id = " << scientist.getId();
+
+    if (!query.exec(QString::fromStdString(sqlQuery.str())))
+    {
+        return false;
+    }
+
+    db.close();
+
+    return true;
+}
+
 std::vector<Computer> ScientistRepository::queryComputersByScientist(Scientist scientist)
 {
     vector<Computer> computers;
