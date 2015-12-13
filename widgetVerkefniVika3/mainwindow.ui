@@ -62,22 +62,22 @@
         </attribute>
         <column>
          <property name="text">
-          <string>Name</string>
+          <string>name</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Sex</string>
+          <string>sex</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Year of birth</string>
+          <string>yearBorn</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Year of death</string>
+          <string>yearDied</string>
          </property>
         </column>
        </widget>
@@ -170,7 +170,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

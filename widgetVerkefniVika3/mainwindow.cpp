@@ -4,12 +4,15 @@
 #include "models/scientist.h"
 #include "services/scientistservice.h"
 #include "addtodatabasedialog.h"
+#include <vector>
+#include "repositories/scientistrepository.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    displayAllScientists();
 
 
 }
@@ -19,7 +22,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/*void MainWindow::displayScientists(std::vector<Scientist> scientists)
+void MainWindow::displayScientists(std::vector<Scientist> scientists)
 {
     ui->table_Scientists->clearContents();
 
@@ -41,13 +44,13 @@ MainWindow::~MainWindow()
     }
 
     currentlyDisplayedScientists = scientists;
-}*/
+}
 
-/*void MainWindow::displayAllScientists()
+void MainWindow::displayAllScientists()
 {
-    std::vector<Scientist> scientists = scientistService.getAllScientists();
+    std::vector<Scientist> scientists = scientistService.getAllScientists("Name", true);
     displayScientists(scientists);
-}*/
+}
 
 void MainWindow::on_action_AddScientist_triggered()
 {
@@ -108,5 +111,10 @@ void MainWindow::on_action_Delete_computer_triggered()
 void MainWindow::on_action_Search_triggered()
 {
     //emil
+}
+
+void MainWindow::on_table_Scientists_clicked(const QModelIndex &index)
+{
+
 }
 
