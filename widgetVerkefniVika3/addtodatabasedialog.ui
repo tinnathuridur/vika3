@@ -208,19 +208,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_Scientist_Sex">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>220</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit_Scientist_YearBorn">
    <property name="enabled">
     <bool>false</bool>
@@ -247,19 +234,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_Computer_Type">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>220</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit_Computer_Name">
    <property name="enabled">
     <bool>false</bool>
@@ -281,19 +255,6 @@
     <rect>
      <x>300</x>
      <y>250</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_Computer_BuiltOrNot">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>280</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -337,6 +298,133 @@
    <property name="text">
     <string>Type:</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Scientist_Sex">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>220</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>Male</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Female</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Computer_BuiltOrNot">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>280</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>Built</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Not Built</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="errorLabel_Scientist">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>330</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Error Scientist</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="errorLabel_Computer">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>330</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Error Computer</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="errorLabel_Join">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>330</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Error Join</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_Computer_Type">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>220</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>Electronic</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Mechatronic</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Transistor</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Other</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

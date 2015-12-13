@@ -3,6 +3,9 @@
 
 #include <QMessageBox>
 
+#include "scientistservice.h"
+#include "computerservice.h"
+
 AddToDatabaseDialog::AddToDatabaseDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddToDatabaseDialog)
@@ -19,14 +22,14 @@ void AddToDatabaseDialog::on_radioButton_Scientist_clicked()
 {
     //Kveikir á öllum scientist textaboxunum
     ui->lineEdit_Scientist_Name->setEnabled(true);
-    ui->lineEdit_Scientist_Sex->setEnabled(true);
+    ui->comboBox_Scientist_Sex->setEnabled(true);
     ui->lineEdit_Scientist_YearBorn->setEnabled(true);
     ui->lineEdit_Scientist_YearDied->setEnabled(true);
     //Slekkur á öllum computer og join textaboxunum
     ui->lineEdit_Computer_Name->setEnabled(false);
-    ui->lineEdit_Computer_Type->setEnabled(false);
+    ui->comboBox_Computer_Type->setEnabled(false);
     ui->lineEdit_Computer_YearBuilt->setEnabled(false);
-    ui->lineEdit_Computer_BuiltOrNot->setEnabled(false);
+    ui->comboBox_Computer_BuiltOrNot->setEnabled(false);
     ui->lineEdit_Join_Scientist->setEnabled(false);
     ui->lineEdit_Join_Computer->setEnabled(false);
 }
@@ -35,13 +38,13 @@ void AddToDatabaseDialog::on_radioButton_Computer_clicked()
 {
     //Kveikir á öllum computer textaboxunum
     ui->lineEdit_Computer_Name->setEnabled(true);
-    ui->lineEdit_Computer_Type->setEnabled(true);
+    ui->comboBox_Computer_Type->setEnabled(true);
     ui->lineEdit_Computer_YearBuilt->setEnabled(true);
-    ui->lineEdit_Computer_BuiltOrNot->setEnabled(true);
+    ui->comboBox_Computer_BuiltOrNot->setEnabled(true);
 
     //Slekkur á öllum scientist og join textaboxunum
     ui->lineEdit_Scientist_Name->setEnabled(false);
-    ui->lineEdit_Scientist_Sex->setEnabled(false);
+    ui->comboBox_Scientist_Sex->setEnabled(false);
     ui->lineEdit_Scientist_YearBorn->setEnabled(false);
     ui->lineEdit_Scientist_YearDied->setEnabled(false);
     ui->lineEdit_Join_Scientist->setEnabled(false);
@@ -55,31 +58,161 @@ void AddToDatabaseDialog::on_radioButton_Join_clicked()
     ui->lineEdit_Join_Computer->setEnabled(true);
     //Slekkur á öllum scientist og computer textaboxunum
     ui->lineEdit_Scientist_Name->setEnabled(false);
-    ui->lineEdit_Scientist_Sex->setEnabled(false);
+    ui->comboBox_Scientist_Sex->setEnabled(false);
     ui->lineEdit_Scientist_YearBorn->setEnabled(false);
     ui->lineEdit_Scientist_YearDied->setEnabled(false);
     ui->lineEdit_Computer_Name->setEnabled(false);
-    ui->lineEdit_Computer_Type->setEnabled(false);
+    ui->comboBox_Computer_Type->setEnabled(false);
     ui->lineEdit_Computer_YearBuilt->setEnabled(false);
-    ui->lineEdit_Computer_BuiltOrNot->setEnabled(false);
+    ui->comboBox_Computer_BuiltOrNot->setEnabled(false);
 }
 
 void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
 {
-    if(ui->radioButton_Scientist->isChecked()){
+    if(ui->radioButton_Scientist->isChecked())
+    {
+        enum sexType sex;
+        bool yearDiedisEmpty;
+        bool success = false;
+
+        QString name = ui->lineEdit_Scientist_Name->text();
+        QString sexQstring = ui->comboBox_Scientist_Sex->currentText();
+        QString yearBorn = ui->lineEdit_Scientist_YearBorn->text();
+        QString yearDied = ui->lineEdit_Scientist_YearDied->text();
+
+        //Athugar hvort eitthvað hafi verið skilið eftir autt
+        bool thereWasAnError = false;
+        if(name.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must have a name!");
+            thereWasAnError = true;
+        }
+
+        if(yearBorn.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born!");
+            thereWasAnError = true;
+        }
+
+        if(thereWasAnError == true)
+        {
+            return;
+        }
+
+
+        //Spyr hvort þú sért viss
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+        if(answer == QMessageBox::No)
+        {
+            return;
+        }
 
-        /*QString name = ui->lineEdit_Scientist_Name->text();
-        QString sex = ui->lineEdit_Scientist_Sex->text();
-        QString yearBorn = ui->lineEdit_Scientist_Sex->text();
-        QString yearDied = ui->lineEdit_Scientist_Sex->text();
+        //Setur sex'ið sem enum sexType
+        if(sexQstring == "Male")
+        {
+            sex = sexType::male;
+        }
+        else
+        {
+            sex = sexType::female;
+        }
 
-        bool success = ScientistService.addScientist(Student(name.toStdString(), yearBorn.toInt(), yearDied.toInt()));/*
-        //Klára að geta sett innslegin gögn í gagnagrunninn*/
+        //Útaf því að fólk má enþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
+
+        if(yearDied.isEmpty())
+        {
+            yearDiedisEmpty = true;
+        }
+
+        if(yearDiedisEmpty == true)
+        {
+            success = scientistService.addScientist(Scientist(name.toStdString(), sex, yearBorn.toInt()));
+        }
+        else
+        {
+            success = scientistService.addScientist(Scientist(name.toStdString(), sex, yearBorn.toInt(), yearDied.toInt()));
+        }
+
+        //Skilar villuskilaboðum ef ekki tókst að skrifa í database
+        if(success == false)
+        {
+            ui->errorLabel_Scientist->setText("UnSuccsess");
+        }
+        else
+        {
+            ui->errorLabel_Scientist->setText("Succsess");
+        }
+
 
     }
     else if(ui->radioButton_Computer->isChecked()){
+        enum computerType type;
+        bool success = false;
+
+        QString name = ui->lineEdit_Computer_Name->text();
+        QString typeQString = ui->comboBox_Computer_Type->currentText();
+        QString yearBuilt = ui->lineEdit_Computer_YearBuilt->text();
+        QString builtOrNotQString = ui->comboBox_Computer_BuiltOrNot->currentText();
+
+        //Athugar hvort eitthvað hafi verið skilið eftir autt
+        bool thereWasAnError = false;
+        if(name.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must have a name!");
+            thereWasAnError = true;
+        }
+
+        if(yearBuilt.isEmpty())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be built!");
+            thereWasAnError = true;
+        }
+
+        if(thereWasAnError == true)
+        {
+            return;
+        }
+
+
+        //Spyr hvort þú sért viss að þú viljir skrifa í database
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+        if(answer == QMessageBox::No)
+        {
+            return;
+        }
+
+        //Setur type'ið sem enum computerType
+        if(typeQString == "Electronic")
+        {
+            type = computerType::electronic;
+        }
+        else if(typeQString == "Mechatronic")
+        {
+            type = computerType::mechatronic;
+        }
+        else if(typeQString == "Transistor")
+        {
+            type = computerType::transistor;
+        }
+        else
+        {
+            type = computerType::other;
+        }
+
+
+        success = computerService.addComputer(Computer(name.toStdString(), type, yearBuilt.toInt()));
+
+
+        //Skilar villuskilaboðum ef ekki tókst að skrifa í database
+        if(success == false)
+        {
+            ui->errorLabel_Scientist->setText("UnSuccsess");
+        }
+        else
+        {
+            ui->errorLabel_Scientist->setText("Succsess");
+        }
+
 
     }
     else if(ui->radioButton_Join->isChecked()){

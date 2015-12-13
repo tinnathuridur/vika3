@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include "scientistservice.h"
+#include "computerservice.h"
 
 namespace Ui {
 class AddToDatabaseDialog;
@@ -30,6 +31,7 @@ private:
     Ui::AddToDatabaseDialog *ui;
 
     ScientistService scientistService;
+    ComputerService computerService;
 };
 
 #endif // ADDTODATABASEDIALOG_H
