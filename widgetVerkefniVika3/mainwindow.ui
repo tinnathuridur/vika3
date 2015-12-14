@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_Scientists">
        <attribute name="title">
@@ -62,22 +62,22 @@
         </attribute>
         <column>
          <property name="text">
-          <string>name</string>
+          <string>Name</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>sex</string>
+          <string>Sex</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>yearBorn</string>
+          <string>Year born</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>yearDied</string>
+          <string>Year died</string>
          </property>
         </column>
        </widget>
@@ -106,17 +106,17 @@
         </attribute>
         <column>
          <property name="text">
-          <string>New Column</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>Name</string>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Year built</string>
          </property>
         </column>
         <column>
@@ -150,7 +150,7 @@
         </attribute>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>Scientist</string>
          </property>
         </column>
         <column>
@@ -170,7 +170,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
