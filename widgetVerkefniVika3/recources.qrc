@@ -6,5 +6,6 @@
         <file>images/add.png</file>
         <file>images/delete.png</file>
         <file>images/edit.png</file>
+        <file>search.png</file>
     </qresource>
 </RCC>

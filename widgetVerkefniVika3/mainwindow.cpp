@@ -137,11 +137,10 @@ void MainWindow::on_action_AddScientist_triggered()
     }
 }*/
 
-bool MainWindow::on_table_Scientist_clicked(/*const QModelIndex &index*/)
+void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_delete->setEnabled(true);
-    return true;
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
@@ -190,14 +189,16 @@ void MainWindow::on_action_Search_triggered()
 
 void MainWindow::on_pushButton_add_clicked()
 {
-
+    AddToDatabaseDialog addToDatabaseDialog;
+    int addToDatabaseReturnValue = addToDatabaseDialog.exec();
+    displayAllScientists();
+    displayAllComputers();
 }
 
 void MainWindow::on_pushButton_delete_clicked()
 {
     //gallað, þarf að laga amk if setningarnar
-    bool scientistClicked = on_table_Scientist_clicked();
-    if (scientistClicked == true)
+    if (true)
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 

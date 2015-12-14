@@ -25,7 +25,7 @@ private slots:
 
     //void on_action_DeleteScientist_triggered();
 
-    bool on_table_Scientist_clicked(/*const QModelIndex &index*/);
+    void on_table_Scientist_clicked(const QModelIndex &index);
 
     void on_table_Computers_clicked(const QModelIndex &index);
 
