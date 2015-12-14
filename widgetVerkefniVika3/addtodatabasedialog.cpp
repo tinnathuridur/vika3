@@ -7,6 +7,8 @@
 #include "computerservice.h"
 #include "linkservice.h"
 
+#include "mainwindow.h"
+
 AddToDatabaseDialog::AddToDatabaseDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddToDatabaseDialog)
@@ -30,7 +32,7 @@ void AddToDatabaseDialog::on_radioButton_Scientist_clicked()
     ui->lineEdit_Computer_Name->setEnabled(false);
     ui->comboBox_Computer_Type->setEnabled(false);
     ui->lineEdit_Computer_YearBuilt->setEnabled(false);
-    ui->comboBox_Computer_BuiltOrNot->setEnabled(false);
+    ui->checkBox_Computer_builtOrNot->setEnabled(false);
     ui->lineEdit_Join_Scientist->setEnabled(false);
     ui->lineEdit_Join_Computer->setEnabled(false);
 }
@@ -40,8 +42,7 @@ void AddToDatabaseDialog::on_radioButton_Computer_clicked()
     //Kveikir á öllum computer textaboxunum
     ui->lineEdit_Computer_Name->setEnabled(true);
     ui->comboBox_Computer_Type->setEnabled(true);
-    ui->lineEdit_Computer_YearBuilt->setEnabled(true);
-    ui->comboBox_Computer_BuiltOrNot->setEnabled(true);
+    ui->checkBox_Computer_builtOrNot->setEnabled(true);
 
     //Slekkur á öllum scientist og join textaboxunum
     ui->lineEdit_Scientist_Name->setEnabled(false);
@@ -65,7 +66,21 @@ void AddToDatabaseDialog::on_radioButton_Join_clicked()
     ui->lineEdit_Computer_Name->setEnabled(false);
     ui->comboBox_Computer_Type->setEnabled(false);
     ui->lineEdit_Computer_YearBuilt->setEnabled(false);
-    ui->comboBox_Computer_BuiltOrNot->setEnabled(false);
+    ui->checkBox_Computer_builtOrNot->setEnabled(false);
+}
+
+void AddToDatabaseDialog::on_checkBox_Computer_builtOrNot_clicked()
+{
+    bool isButtonChecked = ui->checkBox_Computer_builtOrNot->isChecked();
+    if(isButtonChecked)
+    {
+        ui->lineEdit_Computer_YearBuilt->setEnabled(true);
+    }
+    else
+    {
+        ui->lineEdit_Computer_YearBuilt->setEnabled(false);
+        ui->lineEdit_Computer_YearBuilt->setText("");
+    }
 }
 
 void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
@@ -149,11 +164,11 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
     else if(ui->radioButton_Computer->isChecked()){
         enum computerType type;
         bool success = false;
+        bool yearBuiltEmpty = false;
 
         QString name = ui->lineEdit_Computer_Name->text();
         QString typeQString = ui->comboBox_Computer_Type->currentText();
         QString yearBuilt = ui->lineEdit_Computer_YearBuilt->text();
-        QString builtOrNotQString = ui->comboBox_Computer_BuiltOrNot->currentText();
 
         //Athugar hvort eitthvað hafi verið skilið eftir autt
         bool thereWasAnError = false;
@@ -166,6 +181,9 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         if(thereWasAnError == true)
         {
             return;
+        }
+        if(yearBuilt.isEmpty()){
+            yearBuiltEmpty = true;
         }
 
 
@@ -195,7 +213,15 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         }
 
         //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
-        success = computerService.addComputer(Computer(name.toStdString(), type, yearBuilt.toInt()));
+
+        if(yearBuiltEmpty)
+        {
+            success = computerService.addComputer(Computer(name.toStdString(), type));
+        }
+        else
+        {
+            success = computerService.addComputer(Computer(name.toStdString(), type, yearBuilt.toInt()));
+        }
 
 
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
@@ -260,4 +286,10 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
 
 
     }
+}
+
+
+void AddToDatabaseDialog::on_pushButton_Close_clicked()
+{
+    close();
 }

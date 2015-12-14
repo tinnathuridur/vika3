@@ -6,6 +6,7 @@
 #include "scientistservice.h"
 #include "computerservice.h"
 #include "linkservice.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class AddToDatabaseDialog;
@@ -28,12 +29,17 @@ private slots:
 
     void on_pushButton_AddToDatabase_clicked();
 
+    void on_checkBox_Computer_builtOrNot_clicked();
+
+    void on_pushButton_Close_clicked();
+
 private:
     Ui::AddToDatabaseDialog *ui;
 
     ScientistService scientistService;
     ComputerService computerService;
     LinkService linkService;
+    MainWindow mainWindow;
 };
 
 #endif // ADDTODATABASEDIALOG_H
