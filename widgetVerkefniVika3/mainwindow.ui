@@ -16,6 +16,83 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton_add">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/add.png</normaloff>:/icons/images/add.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_delete">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_edit">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/edit.png</normaloff>:/icons/images/edit.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>1</number>
@@ -172,13 +249,6 @@
       </widget>
      </widget>
     </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_add">
-      <property name="text">
-       <string>add</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -196,60 +266,10 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
-   <addaction name="action_AddScientist"/>
-   <addaction name="action_DeleteScientist"/>
-   <addaction name="action_AddComputer"/>
-   <addaction name="action_DeleteComputer"/>
-   <addaction name="action_Search"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="action_AddScientist">
-   <property name="icon">
-    <iconset resource="recources.qrc">
-     <normaloff>:/icons/addPerson.png</normaloff>:/icons/addPerson.png</iconset>
-   </property>
-   <property name="text">
-    <string>add scientist</string>
-   </property>
-  </action>
-  <action name="action_DeleteScientist">
-   <property name="icon">
-    <iconset resource="recources.qrc">
-     <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
-   </property>
-   <property name="text">
-    <string>delete scientist</string>
-   </property>
-  </action>
-  <action name="action_AddComputer">
-   <property name="icon">
-    <iconset resource="recources.qrc">
-     <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
-   </property>
-   <property name="text">
-    <string>add computer</string>
-   </property>
-  </action>
-  <action name="action_DeleteComputer">
-   <property name="icon">
-    <iconset resource="recources.qrc">
-     <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
-   </property>
-   <property name="text">
-    <string>delete computer</string>
-   </property>
-  </action>
-  <action name="action_Search">
-   <property name="icon">
-    <iconset resource="recources.qrc">
-     <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
-   </property>
-   <property name="text">
-    <string>search</string>
-   </property>
-  </action>
   <action name="action_Add">
    <property name="icon">
     <iconset resource="recources.qrc">

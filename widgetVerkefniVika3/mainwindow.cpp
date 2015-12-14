@@ -128,7 +128,7 @@ void MainWindow::on_action_DeleteScientist_triggered()
         //ui->input_filter_students->setText("");
         displayAllScientists();
 
-        ui->action_DeleteScientist->setEnabled(false);
+        ui->pushButton_delete->setEnabled(false);
     }
     else
     {
@@ -136,16 +136,17 @@ void MainWindow::on_action_DeleteScientist_triggered()
     }
 }
 
-void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
+bool MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
-    ui->action_DeleteScientist->setEnabled(true);
+    ui->pushButton_delete->setEnabled(true);
+    return true;
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
 {
     //tinna
-    ui->action_DeleteComputer->setEnabled(true);
+    ui->pushButton_delete->setEnabled(true);
 }
 
 void MainWindow::on_table_Join_clicked(const QModelIndex &index)
@@ -186,8 +187,52 @@ void MainWindow::on_action_Search_triggered()
     //emil
 }
 
-void MainWindow::on_table_Scientists_clicked(const QModelIndex &index)
+void MainWindow::on_pushButton_add_clicked()
 {
-    //af hverju er þetta aftur?
+
 }
 
+void MainWindow::on_pushButton_delete_clicked()
+{
+    //if ()
+    //{
+        int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
+
+        Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+
+        bool success = scientistService.deleteScientist(currentlySelectedScientist);
+
+        if(success)
+        {
+            //ui->input_filter_students->setText("");
+            displayAllScientists();
+
+            ui->pushButton_delete->setEnabled(false);
+        }
+        else
+        {
+            QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
+        }
+    //}
+
+    /*else
+    {
+        int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
+
+        Scientist currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+        bool success = computerService.deleteComputer(currentlySelectedComputer);
+
+        if(success)
+        {
+            //ui->input_filter_students->setText("");
+            displayAllComputers();
+
+            ui->action_DeleteComputer->setEnabled(false);
+        }
+        else
+        {
+            //cout << "There was an error, please try again";
+        }
+    }*/
+}
