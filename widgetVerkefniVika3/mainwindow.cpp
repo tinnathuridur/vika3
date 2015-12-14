@@ -34,16 +34,27 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
     {
         Scientist currentScientist = scientists.at(row);
 
+        QString sexDisplay;
 
+        QString Id = QString::number(currentScientist.getId());
         QString name = QString::fromStdString(currentScientist.getName());
         QString sex = QString::number(currentScientist.getSex());
         QString yearBorn = QString::number(currentScientist.getYearBorn());
         QString yearDied = QString::number(currentScientist.getYearDied());
+            if(sex == "1")
+            {
+                sexDisplay = "Male";
+            }
+            else
+            {
+                sexDisplay = "Female";
+            }
 
-        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(name));
-        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(sex));
-        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(yearBorn));
-        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(yearDied));
+        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(Id));
+        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
+        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(sexDisplay));
+        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(yearBorn));
+        ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(yearDied));
     }
 
     currentlyDisplayedScientists = scientists;
@@ -63,16 +74,28 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     for (unsigned int row = 0; row < computers.size(); row++)
     {
         Computer currentComputers = computers.at(row);
+        QString wasItBuilt;
 
+        QString id = QString::number(currentComputers.getId());
         QString name = QString::fromStdString(currentComputers.getName());
-        QString type = QString::number(currentComputers.getType());
+        QString type = QString::fromStdString(currentComputers.getTypeName());
         QString yearBuilt = QString::number(currentComputers.getYearBuilt());
-        //QString wasBuilt = QString::number(currentComputers.getWasBuilt);
+        QString wasBuilt = QString::number(currentComputers.wasBuilt());
 
-        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(name));
-        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(type));
-        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(yearBuilt));
-        //ui->table_Computers->setItem(row, 3, new QTableWidgetItem(wasBuilt));
+        if(wasBuilt == "1")
+        {
+            wasItBuilt = "Yes";
+        }
+        else
+        {
+            wasItBuilt = "No";
+        }
+
+        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
+        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
+        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(type));
+        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(yearBuilt));
+        ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasItBuilt));
     }
 
     currentlyDisplayedComputers = computers;

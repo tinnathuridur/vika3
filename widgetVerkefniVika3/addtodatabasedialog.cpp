@@ -163,12 +163,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             thereWasAnError = true;
         }
 
-        if(yearBuilt.isEmpty())
-        {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be built!");
-            thereWasAnError = true;
-        }
-
         if(thereWasAnError == true)
         {
             return;
