@@ -115,28 +115,6 @@ void MainWindow::on_action_AddScientist_triggered()
     int addToDatabaseReturnValue = addToDatabaseDialog.exec();
 }
 
-/*void MainWindow::on_action_DeleteScientist_triggered()
-{
-    //tinna
-    int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
-
-    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
-
-    bool success = scientistService.deleteScientist(currentlySelectedScientist);
-
-    if(success)
-    {
-        //ui->input_filter_students->setText("");
-        displayAllScientists();
-
-        ui->pushButton_delete->setEnabled(false);
-    }
-    else
-    {
-        QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
-    }
-}*/
-
 void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
@@ -160,28 +138,6 @@ void MainWindow::on_action_Add_computer_triggered()
     //tryggvi geyma
 }
 
-/*void MainWindow::on_action_Delete_computer_triggered()
-{
-    //tinna geyma
-    int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
-
-    Scientist currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
-
-    bool success = computerService.deleteComputer(currentlySelectedComputer);
-
-    if(success)
-    {
-        //ui->input_filter_students->setText("");
-        displayAllComputers();
-
-        ui->action_DeleteComputer->setEnabled(false);
-    }
-    else
-    {
-        //cout << "There was an error, please try again";
-    }
-}*/
-
 void MainWindow::on_action_Search_triggered()
 {
     //emil
@@ -197,8 +153,7 @@ void MainWindow::on_pushButton_add_clicked()
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    //gallað, þarf að laga amk if setningarnar
-    if (ui->tabWidget->currentIndex() == 0)
+    if (ui->tabWidget->currentIndex() == 0 /*&& ui->tabWidget->currentWidget() ==*/ )
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
@@ -218,7 +173,7 @@ void MainWindow::on_pushButton_delete_clicked()
         }
     }
 
-    else
+    else if(ui->tabWidget->currentIndex() == 1 /*&& ui->tabWidget->currentWidget() == pointer á computer tab*/)
     {
         int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
 
@@ -236,6 +191,11 @@ void MainWindow::on_pushButton_delete_clicked()
         {
             QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
         }
+    }
+
+    else
+    {
+     //eyða úr join
     }
 }
 
