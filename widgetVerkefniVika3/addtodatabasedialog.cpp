@@ -109,10 +109,22 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born!");
             thereWasAnError = true;
         }
+        //Error skilaboð ef yearDied er áður en yearBorn
+        if(yearBorn.toInt() > yearDied.toInt())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born before you die!");
+            thereWasAnError = true;
+        }
 
         if(thereWasAnError == true)
         {
             return;
+        }
+
+        //Error skilaboð ef yearDied er áður en yearBorn
+        if(yearBorn.toInt() > yearDied.toInt())
+        {
+            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born before you die!");
         }
 
 
@@ -133,8 +145,10 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             sex = sexType::female;
         }
 
-        //Útaf því að fólk má ennþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
 
+
+
+        //Útaf því að fólk má ennþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
         if(yearDied.isEmpty())
         {
             yearDiedisEmpty = true;
