@@ -194,8 +194,8 @@ void MainWindow::on_pushButton_add_clicked()
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    //if ()
-    //{
+    if (true)
+    {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
         Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
@@ -213,26 +213,25 @@ void MainWindow::on_pushButton_delete_clicked()
         {
             QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
         }
-    //}
+    }
 
-    /*else
+    else
     {
         int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
 
-        Scientist currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+        Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
 
-        bool success = computerService.deleteComputer(currentlySelectedComputer);
+        bool success = computersService.deleteComputer(currentlySelectedComputer);
 
         if(success)
         {
-            //ui->input_filter_students->setText("");
             displayAllComputers();
 
-            ui->action_DeleteComputer->setEnabled(false);
+            ui->pushButton_delete->setEnabled(false);
         }
         else
         {
-            //cout << "There was an error, please try again";
+            QMessageBox::QMessageBox::information(NULL, "There was an error, computer not deleted", "Please try again");
         }
-    }*/
+    }
 }
