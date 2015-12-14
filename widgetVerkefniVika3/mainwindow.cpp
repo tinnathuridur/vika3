@@ -3,9 +3,11 @@
 #include "models/computer.h"
 #include "models/scientist.h"
 #include "services/scientistservice.h"
+#include "services/computerservice.h"
 #include "addtodatabasedialog.h"
 #include <vector>
 #include "repositories/scientistrepository.h"
+#include "repositories/computerrepository.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -14,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     displayAllScientists();
+    displayAllComputers();
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +46,35 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
     }
 
     currentlyDisplayedScientists = scientists;
+}
+
+void MainWindow::displayAllComputers()
+{
+    std::vector<Computer> computers = computersService.getAllComputers("Name", true);
+    displayComputers(computers);
+}
+void MainWindow::displayComputers(std::vector<Computer> computers)
+{
+    ui->table_Computers->clearContents();
+
+    ui->table_Computers->setRowCount(computers.size());
+
+    for (unsigned int row = 0; row < computers.size(); row++)
+    {
+        Computer currentComputers = computers.at(row);
+
+        QString name = QString::fromStdString(currentComputers.getName());
+        QString type = QString::number(currentComputers.getType());
+        QString yearBuilt = QString::number(currentComputers.getYearBuilt());
+        //QString wasBuilt = QString::number(currentComputers.getWasBuilt);
+
+        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(name));
+        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(type));
+        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(yearBuilt));
+        //ui->table_Computers->setItem(row, 3, new QTableWidgetItem(wasBuilt));
+    }
+
+    currentlyDisplayedComputers = computers;
 }
 
 void MainWindow::displayAllScientists()

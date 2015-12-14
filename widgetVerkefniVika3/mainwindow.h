@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "models/scientist.h"
 #include "services/scientistservice.h"
+#include "services/computerservice.h"
 #include <vector>
 
 
@@ -42,11 +43,15 @@ private:
     Ui::MainWindow *ui;
 
     std::vector<Scientist> currentlyDisplayedScientists;
+    std::vector<Computer> currentlyDisplayedComputers;
 
     void displayAllScientists();
     void displayScientists(std::vector<Scientist> scientists);
 
+    void displayAllComputers();
+    void displayComputers(std::vector<Computer> computers);
 
+    ComputerService computersService;
     ScientistService scientistService;
 
 };
