@@ -244,3 +244,8 @@ void MainWindow::on_pushButton_edit_clicked()
 {
 
 }
+
+void MainWindow::on_pushButton_search_clicked()
+{
+
+}

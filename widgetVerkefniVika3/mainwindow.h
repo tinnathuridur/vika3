@@ -43,6 +43,8 @@ private slots:
 
     void on_pushButton_edit_clicked();
 
+    void on_pushButton_search_clicked();
+
 private:
     Ui::MainWindow *ui;
 
