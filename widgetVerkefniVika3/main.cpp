@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QSqlDatabase db;
 
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("ComputerHistory_db.sqlite");
+        db.setDatabaseName("database.sqlite");
         db. open();
         if (!db.open())
            {
