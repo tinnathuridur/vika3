@@ -4,13 +4,11 @@
 
 int main(int argc, char *argv[])
 {
-
-
-
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    QSqlDatabase db;
+
+    /*QSqlDatabase db;
 
         db = QSqlDatabase::addDatabase("QSQLITE");
         db.setDatabaseName("database.sqlite");
@@ -44,7 +42,7 @@ int main(int argc, char *argv[])
                    "computerId INTEGER,"
                    "foreign key (scientistId) references Scientists(id),"
                    "foreign key (computerId) references Computers(id),"
-                   "primary key(scientistId, computerId)");
+                   "primary key(scientistId, computerId)");*/
 
 
 

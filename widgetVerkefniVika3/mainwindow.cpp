@@ -6,6 +6,7 @@
 #include "addtodatabasedialog.h"
 #include <vector>
 #include "repositories/scientistrepository.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,8 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     displayAllScientists();
-
-
 }
 
 MainWindow::~MainWindow()
@@ -77,7 +76,7 @@ void MainWindow::on_action_DeleteScientist_triggered()
     }
     else
     {
-        //cout << "There was an error, please try again";
+        QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
     }
 }
 
