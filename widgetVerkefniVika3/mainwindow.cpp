@@ -198,7 +198,7 @@ void MainWindow::on_pushButton_add_clicked()
 void MainWindow::on_pushButton_delete_clicked()
 {
     //gallað, þarf að laga amk if setningarnar
-    if (true)
+    if (ui->tabWidget->currentIndex() == 0)
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
@@ -208,14 +208,13 @@ void MainWindow::on_pushButton_delete_clicked()
 
         if(success)
         {
-            //ui->input_filter_students->setText("");
             displayAllScientists();
 
             ui->pushButton_delete->setEnabled(false);
         }
         else
         {
-            QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
+            QMessageBox::warning(this, "Error", "Scientist was not deleted. Please try again");
         }
     }
 
@@ -235,7 +234,7 @@ void MainWindow::on_pushButton_delete_clicked()
         }
         else
         {
-            QMessageBox::QMessageBox::information(NULL, "There was an error, computer not deleted", "Please try again");
+            QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
         }
     }
 }
