@@ -45,6 +45,10 @@ private slots:
 
     void on_pushButton_search_clicked();
 
+    void on_pushButton_search_toggled(bool checked);
+
+    void on_lineEdit_Search_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 

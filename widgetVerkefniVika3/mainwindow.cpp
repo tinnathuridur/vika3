@@ -10,13 +10,18 @@
 #include "repositories/computerrepository.h"
 #include <QMessageBox>
 
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->lineEdit_Search->hide();
+
     displayAllScientists();
     displayAllComputers();
+
 }
 
 MainWindow::~MainWindow()
@@ -207,4 +212,26 @@ void MainWindow::on_pushButton_edit_clicked()
 void MainWindow::on_pushButton_search_clicked()
 {
 
+}
+
+void MainWindow::on_pushButton_search_toggled(bool checked)
+{
+    if(checked == true)
+    {
+        ui->lineEdit_Search->hide();
+    }
+    else
+    {
+        ui->lineEdit_Search->show();
+    }
+}
+
+void MainWindow::on_lineEdit_Search_textChanged(const QString &arg1)
+{
+    std::string userInput = ui->lineEdit_Search->text().toStdString();
+
+    vector<Scientist>scientists = scientistService.searchForScientists(userInput);
+    displayScientists(scientists);
+    vector<Computer>computer = computersService.searchForComputers(userInput);
+    displayComputers(computer);
 }

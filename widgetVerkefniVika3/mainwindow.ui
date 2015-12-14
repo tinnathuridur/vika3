@@ -91,12 +91,15 @@
        </spacer>
       </item>
       <item>
+       <widget class="QLineEdit" name="lineEdit_Search"/>
+      </item>
+      <item>
        <widget class="QPushButton" name="pushButton_search">
         <property name="text">
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="recources.qrc">
+         <iconset>
           <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
         </property>
         <property name="iconSize">
@@ -104,6 +107,9 @@
           <width>30</width>
           <height>30</height>
          </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -274,7 +280,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -283,7 +289,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
