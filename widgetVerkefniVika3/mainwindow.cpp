@@ -136,7 +136,7 @@ void MainWindow::on_action_DeleteScientist_triggered()
     }
 }
 
-bool MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
+bool MainWindow::on_table_Scientist_clicked(/*const QModelIndex &index*/)
 {
     //tinna
     ui->pushButton_delete->setEnabled(true);
@@ -194,7 +194,9 @@ void MainWindow::on_pushButton_add_clicked()
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    if (true)
+    //gallað, þarf að laga amk if setningarnar
+    bool scientistClicked = on_table_Scientist_clicked();
+    if (scientistClicked == true)
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
