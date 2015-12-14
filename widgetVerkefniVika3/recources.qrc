@@ -3,5 +3,8 @@
         <file>addPerson.png</file>
         <file>images/deletePerson.png</file>
         <file>deletePerson.png</file>
+        <file>images/add.png</file>
+        <file>images/delete.png</file>
+        <file>images/edit.png</file>
     </qresource>
 </RCC>

@@ -172,6 +172,13 @@
       </widget>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_add">
+      <property name="text">
+       <string>add</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -180,7 +187,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -241,6 +248,33 @@
    </property>
    <property name="text">
     <string>search</string>
+   </property>
+  </action>
+  <action name="action_Add">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/icons/images/add.png</normaloff>:/icons/images/add.png</iconset>
+   </property>
+   <property name="text">
+    <string>add</string>
+   </property>
+  </action>
+  <action name="action_Delete">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>delete</string>
+   </property>
+  </action>
+  <action name="action_Edit">
+   <property name="icon">
+    <iconset resource="recources.qrc">
+     <normaloff>:/icons/images/edit.png</normaloff>:/icons/images/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>edit</string>
    </property>
   </action>
  </widget>
