@@ -170,7 +170,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -190,7 +190,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_AddScientist">
    <property name="icon">
-    <iconset resource="recources.qrc">
+    <iconset>
      <normaloff>:/icons/addPerson.png</normaloff>:/icons/addPerson.png</iconset>
    </property>
    <property name="text">
@@ -198,8 +198,11 @@
    </property>
   </action>
   <action name="action_DeleteScientist">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="icon">
-    <iconset resource="recources.qrc">
+    <iconset>
      <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
    </property>
    <property name="text">
@@ -208,7 +211,7 @@
   </action>
   <action name="action_AddComputer">
    <property name="icon">
-    <iconset resource="recources.qrc">
+    <iconset>
      <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
    </property>
    <property name="text">
@@ -217,7 +220,7 @@
   </action>
   <action name="action_DeleteComputer">
    <property name="icon">
-    <iconset resource="recources.qrc">
+    <iconset>
      <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
    </property>
    <property name="text">
@@ -226,7 +229,7 @@
   </action>
   <action name="action_Search">
    <property name="icon">
-    <iconset resource="recources.qrc">
+    <iconset>
      <normaloff>:/icons/images/deletePerson.png</normaloff>:/icons/images/deletePerson.png</iconset>
    </property>
    <property name="text">
@@ -235,8 +238,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="recources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
