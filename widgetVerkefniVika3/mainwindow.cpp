@@ -65,6 +65,7 @@ void MainWindow::displayAllComputers()
     std::vector<Computer> computers = computersService.getAllComputers("Name", true);
     displayComputers(computers);
 }
+
 void MainWindow::displayComputers(std::vector<Computer> computers)
 {
     ui->table_Computers->clearContents();
@@ -114,7 +115,7 @@ void MainWindow::on_action_AddScientist_triggered()
     int addToDatabaseReturnValue = addToDatabaseDialog.exec();
 }
 
-void MainWindow::on_action_DeleteScientist_triggered()
+/*void MainWindow::on_action_DeleteScientist_triggered()
 {
     //tinna
     int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
@@ -134,7 +135,7 @@ void MainWindow::on_action_DeleteScientist_triggered()
     {
         QMessageBox::QMessageBox::information(NULL, "There was an error, scientist was not deleted", "Please try again");
     }
-}
+}*/
 
 bool MainWindow::on_table_Scientist_clicked(/*const QModelIndex &index*/)
 {
@@ -160,10 +161,10 @@ void MainWindow::on_action_Add_computer_triggered()
     //tryggvi geyma
 }
 
-void MainWindow::on_action_Delete_computer_triggered()
+/*void MainWindow::on_action_Delete_computer_triggered()
 {
     //tinna geyma
-    /*int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
+    int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
 
     Scientist currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
 
@@ -179,8 +180,8 @@ void MainWindow::on_action_Delete_computer_triggered()
     else
     {
         //cout << "There was an error, please try again";
-    }*/
-}
+    }
+}*/
 
 void MainWindow::on_action_Search_triggered()
 {
@@ -236,4 +237,9 @@ void MainWindow::on_pushButton_delete_clicked()
             QMessageBox::QMessageBox::information(NULL, "There was an error, computer not deleted", "Please try again");
         }
     }
+}
+
+void MainWindow::on_pushButton_edit_clicked()
+{
+
 }

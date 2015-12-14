@@ -23,7 +23,7 @@ public:
 private slots:
     void on_action_AddScientist_triggered();
 
-    void on_action_DeleteScientist_triggered();
+    //void on_action_DeleteScientist_triggered();
 
     bool on_table_Scientist_clicked(/*const QModelIndex &index*/);
 
@@ -33,13 +33,15 @@ private slots:
 
     void on_action_Add_computer_triggered();
 
-    void on_action_Delete_computer_triggered();
+    //void on_action_Delete_computer_triggered();
 
     void on_action_Search_triggered();
 
     void on_pushButton_add_clicked();
 
     void on_pushButton_delete_clicked();
+
+    void on_pushButton_edit_clicked();
 
 private:
     Ui::MainWindow *ui;
