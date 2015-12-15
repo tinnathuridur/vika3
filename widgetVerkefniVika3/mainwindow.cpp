@@ -36,6 +36,8 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
 
     ui->table_Scientists->setRowCount(scientists.size());
 
+    ui->table_Scientists->verticalHeader()->setVisible(false);
+
     for (unsigned int row = 0; row < scientists.size(); row++)
     {
         Scientist currentScientist = scientists.at(row);
@@ -77,6 +79,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     ui->table_Computers->clearContents();
 
     ui->table_Computers->setRowCount(computers.size());
+
+    ui->table_Computers->verticalHeader()->setVisible(false);
 
     for (unsigned int row = 0; row < computers.size(); row++)
     {
