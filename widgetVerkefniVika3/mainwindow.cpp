@@ -68,7 +68,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
 
 void MainWindow::displayAllComputers()
 {
-    std::vector<Computer> computers = computersService.getAllComputers("Name", true);
+    std::vector<Computer> computers = computersService.getAllComputers("id", true);
     displayComputers(computers);
 }
 
@@ -110,7 +110,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
 void MainWindow::displayAllScientists()
 {
-    std::vector<Scientist> scientists = scientistService.getAllScientists("Name", true);
+    std::vector<Scientist> scientists = scientistService.getAllScientists("id", true);
     displayScientists(scientists);
 }
 
@@ -227,11 +227,11 @@ void MainWindow::on_pushButton_search_toggled(bool checked)
 {
     if(checked == true)
     {
-        ui->lineEdit_Search->hide();
+        ui->lineEdit_Search->show();
     }
     else
     {
-        ui->lineEdit_Search->show();
+        ui->lineEdit_Search->hide();
     }
 }
 
