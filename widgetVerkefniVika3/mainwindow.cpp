@@ -162,7 +162,7 @@ void MainWindow::on_pushButton_add_clicked()
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    if (ui->tabWidget->currentIndex() == 0 /*&& ui->tabWidget->currentWidget() ==*/ )
+    if (ui->tabWidget->currentIndex() == 0)
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 
@@ -179,10 +179,11 @@ void MainWindow::on_pushButton_delete_clicked()
         else
         {
             QMessageBox::warning(this, "Error", "Scientist was not deleted. Please try again");
+            ui->pushButton_delete->setEnabled(false);
         }
     }
 
-    else if(ui->tabWidget->currentIndex() == 1 /*&& ui->tabWidget->currentWidget() == pointer á computer tab*/)
+    else //if(ui->tabWidget->currentIndex() == 1 /*&& ui->tabWidget->currentWidget() == pointer á computer tab*/)
     {
         int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
 
@@ -199,13 +200,14 @@ void MainWindow::on_pushButton_delete_clicked()
         else
         {
             QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
+            ui->pushButton_delete->setEnabled(false);
         }
     }
 
-    else
+   /* else
     {
      //eyða úr join
-    }
+    }*/
 }
 
 void MainWindow::on_pushButton_edit_clicked()
