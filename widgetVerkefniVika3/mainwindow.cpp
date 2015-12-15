@@ -161,7 +161,7 @@ void MainWindow::on_pushButton_add_clicked()
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    if (true)//(ui->tabWidget->currentIndex() == 0 && ui->table_Scientists->currentIndex().row() != -1)
+    if (ui->tabWidget->currentIndex() == 0)
     {
         int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
 

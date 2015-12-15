@@ -110,7 +110,7 @@ bool ComputerRepository::deleteComputer(Computer computer)
     QSqlQuery query(db);
 
     stringstream sqlQuery;
-    sqlQuery << "DELETE FROM Scientists WHERE id = " << computer.getId();
+    sqlQuery << "DELETE FROM Computers WHERE id = " << computer.getId();
 
     if (!query.exec(QString::fromStdString(sqlQuery.str())))
     {
