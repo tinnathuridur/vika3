@@ -124,18 +124,21 @@ void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Join_clicked(const QModelIndex &index)
 {
     //tinna
-    //viljum við að fólk geti breytt þessari töflu?
+    ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_action_Add_computer_triggered()
