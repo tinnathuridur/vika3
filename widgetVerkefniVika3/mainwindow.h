@@ -39,8 +39,6 @@ private slots:
 
     void on_pushButton_add_clicked();
 
-    void on_pushButton_delete_clicked();
-
     void on_pushButton_edit_clicked();
 
     void on_pushButton_search_clicked();
@@ -48,6 +46,8 @@ private slots:
     void on_pushButton_search_toggled(bool checked);
 
     void on_lineEdit_Search_textChanged(const QString &arg1);
+
+    void on_pushButton_delete_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
