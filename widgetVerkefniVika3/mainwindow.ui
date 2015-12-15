@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
-    <height>535</height>
+    <width>661</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,29 +37,6 @@
           <width>30</width>
           <height>30</height>
          </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_delete">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="recources.qrc">
-          <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -133,6 +110,9 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="currentIndex">
        <number>1</number>
       </property>
@@ -141,6 +121,9 @@
         <string>Scientists</string>
        </attribute>
        <widget class="QTableWidget" name="table_Scientists">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -202,6 +185,32 @@
          </property>
         </column>
        </widget>
+       <widget class="QPushButton" name="pushButton_deleteScientist">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>446</x>
+          <y>370</y>
+          <width>171</width>
+          <height>46</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>delete scientist</string>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_Computers">
        <attribute name="title">
@@ -251,6 +260,35 @@
          </property>
         </column>
        </widget>
+       <widget class="QPushButton" name="pushButton_deleteComputer">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>370</y>
+          <width>171</width>
+          <height>46</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>delete computer</string>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_Join">
        <attribute name="title">
@@ -285,6 +323,32 @@
          </property>
         </column>
        </widget>
+       <widget class="QPushButton" name="pushButton_deleteJoin">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>370</y>
+          <width>171</width>
+          <height>46</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>delete connection</string>
+        </property>
+        <property name="icon">
+         <iconset resource="recources.qrc">
+          <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -295,7 +359,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>648</width>
+     <width>661</width>
      <height>22</height>
     </rect>
    </property>

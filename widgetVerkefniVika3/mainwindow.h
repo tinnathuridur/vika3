@@ -49,6 +49,12 @@ private slots:
 
     void on_pushButton_delete_toggled(bool checked);
 
+    void on_pushButton_deleteScientist_clicked();
+
+    void on_pushButton_deleteJoin_clicked();
+
+    void on_pushButton_deleteComputer_clicked();
+
 private:
     Ui::MainWindow *ui;
 
