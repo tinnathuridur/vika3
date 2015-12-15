@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     services/scientistservice.cpp \
     utilities/utils.cpp \
     ui/consoleui.cpp \
-    addtodatabasedialog.cpp
+    addtodatabasedialog.cpp \
+    editdatabase.cpp
 
 HEADERS  += mainwindow.h \
     models/computer.h \
@@ -44,10 +45,12 @@ HEADERS  += mainwindow.h \
     utilities/constants.h \
     utilities/utils.h \
     ui/consoleui.h \
-    addtodatabasedialog.h
+    addtodatabasedialog.h \
+    editdatabase.h
 
 FORMS    += mainwindow.ui \
-    addtodatabasedialog.ui
+    addtodatabasedialog.ui \
+    editdatabase.ui
 
 INCLUDEPATH += models \
     repositories \

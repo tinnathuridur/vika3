@@ -63,7 +63,7 @@
       <item>
        <widget class="QPushButton" name="pushButton_edit">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="text">
          <string/>
@@ -283,7 +283,7 @@
      <x>0</x>
      <y>0</y>
      <width>651</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

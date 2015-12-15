@@ -9,6 +9,7 @@
 #include "repositories/scientistrepository.h"
 #include "repositories/computerrepository.h"
 #include <QMessageBox>
+#include "editdatabase.h"
 
 using namespace std;
 
@@ -209,7 +210,10 @@ void MainWindow::on_pushButton_delete_clicked()
 
 void MainWindow::on_pushButton_edit_clicked()
 {
-
+    editDatabase editDatabase;
+    int editDatabaseReturnValue = editDatabase.exec();
+    displayAllScientists();
+    displayAllComputers();
 }
 
 void MainWindow::on_pushButton_search_clicked()
