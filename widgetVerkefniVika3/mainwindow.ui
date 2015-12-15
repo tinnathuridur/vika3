@@ -114,11 +114,8 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-<<<<<<< HEAD
        <number>2</number>
-=======
        <number>1</number>
->>>>>>> a309045742700a24099ac43079ae25b8a9ca1295
       </property>
       <widget class="QWidget" name="tab_Scientists">
        <attribute name="title">
