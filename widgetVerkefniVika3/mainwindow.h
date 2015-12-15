@@ -31,11 +31,7 @@ private slots:
 
     void on_table_Join_clicked(const QModelIndex &index);
 
-    void on_action_Add_computer_triggered();
-
     //void on_action_Delete_computer_triggered();
-
-    void on_action_Search_triggered();
 
     void on_pushButton_add_clicked();
 
@@ -48,8 +44,6 @@ private slots:
     void on_lineEdit_Search_textChanged(const QString &arg1);
 
     void displayAllLinks();
-
-    void on_pushButton_delete_toggled(bool checked);
 
     void on_pushButton_deleteScientist_clicked();
 
@@ -71,7 +65,6 @@ private:
 
     ComputerService computersService;
     ScientistService scientistService;
-
 };
 
 #endif // MAINWINDOW_H
