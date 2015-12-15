@@ -1,6 +1,7 @@
 #include "linkrepository.h"
 #include "utilities/utils.h"
-
+#include "models/computer.h"
+#include "models/scientist.h"
 #include <cstdlib>
 #include <sstream>
 #include <QString>
@@ -28,6 +29,33 @@ bool LinkRepository::addLink(string scientistId, string computerId)
              << "'" << scientistId << "', "
              << "'" << computerId << "'"
              << ")";
+
+    if (!query.exec(QString::fromStdString(sqlQuery.str())))
+    {
+        return false;
+    }
+
+    db.close();
+
+    return true;
+}
+
+bool LinkRepository::deleteLink(string scientistId, string computerId)
+{
+    //nytt (tinna)
+    db.open();
+
+    if (!db.isOpen())
+    {
+        return false;
+    }
+
+    QSqlQuery query(db);
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM ScientistsComputerConnections WHERE id = "
+             << scientistId
+             << computerId;
 
     if (!query.exec(QString::fromStdString(sqlQuery.str())))
     {
