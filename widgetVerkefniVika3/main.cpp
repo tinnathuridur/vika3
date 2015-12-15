@@ -8,10 +8,10 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    /*QSqlDatabase db;
+    QSqlDatabase db;
 
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("database.sqlite");
+        db.setDatabaseName("ComputerHistory_db.sqlite");
         db. open();
         if (!db.open())
            {
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
               qDebug() << "Database: connection ok";
            }
 
-    QSqlQuery query;
+    /*QSqlQuery query;
     query.exec("CREATE TABLE Computers("
                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                    "name VARCHAR NOT NULL,"
@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
                    "foreign key (scientistId) references Scientists(id),"
                    "foreign key (computerId) references Computers(id),"
                    "primary key(scientistId, computerId)");*/
-
 
 
 

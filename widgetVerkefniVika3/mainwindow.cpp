@@ -197,6 +197,7 @@ void MainWindow::on_pushButton_add_clicked()
     int addToDatabaseReturnValue = addToDatabaseDialog.exec();
     displayAllScientists();
     displayAllComputers();
+    displayAllLinks();
 }
 
 void MainWindow::on_pushButton_edit_clicked()
