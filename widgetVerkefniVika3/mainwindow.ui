@@ -131,7 +131,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_Scientists">
        <attribute name="title">
@@ -180,22 +180,22 @@
         </column>
         <column>
          <property name="text">
-          <string>name</string>
+          <string>Name</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>sex</string>
+          <string>Sex</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>yearBorn</string>
+          <string>Year Born</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>yearDied</string>
+          <string>Year Died</string>
          </property>
         </column>
        </widget>
@@ -262,6 +262,15 @@
           <height>351</height>
          </rect>
         </property>
+        <property name="showDropIndicator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
         <property name="sortingEnabled">
          <bool>true</bool>
         </property>
@@ -271,9 +280,12 @@
         <attribute name="horizontalHeaderStretchLastSection">
          <bool>true</bool>
         </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>Scientist</string>
          </property>
         </column>
         <column>

@@ -10,6 +10,7 @@
 #include "repositories/computerrepository.h"
 #include <QMessageBox>
 #include "editdatabase.h"
+#include <iostream>
 
 using namespace std;
 
@@ -17,11 +18,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     ui->lineEdit_Search->hide();
 
     displayAllScientists();
     displayAllComputers();
+    displayAllLinks();
 
 }
 
@@ -112,6 +115,48 @@ void MainWindow::displayAllScientists()
 {
     std::vector<Scientist> scientists = scientistService.getAllScientists("id", true);
     displayScientists(scientists);
+}
+
+void MainWindow::displayAllLinks()
+{
+    //Breytur
+    int row = 0;
+    int rowCounter = 0;
+    std::vector<Computer> computersAll = computersService.getAllComputers("id", true);
+
+    //Teljari til að finna út fjölda lína í table'inu
+    for(unsigned int i = 0; i < computersAll.size(); i++)
+    {
+        std::vector<Scientist> scientistAll = computersAll.at(i).getScientists();
+        rowCounter = rowCounter + scientistAll.size();
+    }
+
+    //Setur inn fjölda lína
+    ui->table_Join->setRowCount(rowCounter);
+
+    //Skrifar út gögnin í línurnar
+    for(unsigned int i = 0; i < computersAll.size(); i++)
+    {
+
+        std::vector<Scientist> scientistAll = computersAll.at(i).getScientists();
+
+        for(unsigned int j = 0; j < scientistAll.size(); j++)
+        {
+
+
+        Computer currentComputers = computersAll.at(i);
+        Scientist currentScientist = scientistAll.at(j);
+
+
+        QString scientistName = QString::fromStdString(currentScientist.getName());
+        QString computerName = QString::fromStdString(currentComputers.getName());
+
+        ui->table_Join->setItem(row, 0, new QTableWidgetItem(scientistName));
+        ui->table_Join->setItem(row, 1, new QTableWidgetItem(computerName));
+
+        row++;
+        }
+    }
 }
 
 void MainWindow::on_action_AddScientist_triggered()

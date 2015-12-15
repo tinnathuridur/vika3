@@ -49,6 +49,8 @@ private slots:
 
     void on_lineEdit_Search_textChanged(const QString &arg1);
 
+    void displayAllLinks();
+
 private:
     Ui::MainWindow *ui;
 
