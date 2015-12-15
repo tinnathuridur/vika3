@@ -1,13 +1,13 @@
 INSERT INTO Computers (name, type)
-VALUES ('The Difference engine', 'Mechatronic'),
-('Turing machine', 'Electronic');
+VALUES ('The Difference engine', ‘1’),
+('Turing machine', '0');
 
 INSERT INTO COMPUTERS (name, type, yearBuilt)
- VALUES ('Z3', '0', '1941'),
- ('ENIAC', '0', '1944'),
- ('Alanasoff-Berry computer', '0', '1946'),
+VALUES ('Z3', '0', '1941'),
+('ENIAC', '0', '1944'),
+('Alanasoff-Berry computer', '0', '1946'),
 ('Colossus Mark 1', '0', '1944'),
- ('Zuse Z4','1', '1945'),
- ('Manchester Small-Scale Experimental Machine', '0', '1948'),
- ('EDSAC', '0', '1949'),
- ('CSIRAC', '0', '1949');
+('Zuse Z4','1', '1945'),
+('Manchester Small-Scale Experimental Machine', '0', '1948'),
+('EDSAC', '0', '1949'),
+('CSIRAC', '0', '1949');
