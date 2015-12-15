@@ -9,7 +9,6 @@
 #include "repositories/scientistrepository.h"
 #include "repositories/computerrepository.h"
 #include <QMessageBox>
-#include "editdatabase.h"
 #include <iostream>
 
 using namespace std;
@@ -174,21 +173,18 @@ void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_deleteScientist->setEnabled(true);
-    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_deleteComputer->setEnabled(true);
-    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Join_clicked(const QModelIndex &index)
 {
     //tinna
     ui->pushButton_deleteJoin->setEnabled(true);
-    ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_pushButton_add_clicked()
@@ -198,14 +194,6 @@ void MainWindow::on_pushButton_add_clicked()
     displayAllScientists();
     displayAllComputers();
     displayAllLinks();
-}
-
-void MainWindow::on_pushButton_edit_clicked()
-{
-    editDatabase editDatabase;
-    int editDatabaseReturnValue = editDatabase.exec();
-    displayAllScientists();
-    displayAllComputers();
 }
 
 void MainWindow::on_pushButton_search_clicked()

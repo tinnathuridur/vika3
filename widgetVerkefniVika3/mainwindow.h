@@ -35,8 +35,6 @@ private slots:
 
     void on_pushButton_add_clicked();
 
-    void on_pushButton_edit_clicked();
-
     void on_pushButton_search_clicked();
 
     void on_pushButton_search_toggled(bool checked);
