@@ -39,6 +39,8 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
 
     ui->table_Scientists->setRowCount(scientists.size());
 
+    ui->table_Scientists->verticalHeader()->setVisible(false);
+
     for (unsigned int row = 0; row < scientists.size(); row++)
     {
         Scientist currentScientist = scientists.at(row);
@@ -80,6 +82,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     ui->table_Computers->clearContents();
 
     ui->table_Computers->setRowCount(computers.size());
+
+    ui->table_Computers->verticalHeader()->setVisible(false);
 
     for (unsigned int row = 0; row < computers.size(); row++)
     {
@@ -169,21 +173,21 @@ void MainWindow::on_action_AddScientist_triggered()
 void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
 {
     //tinna
-    ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_deleteScientist->setEnabled(true);
     ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Computers_clicked(const QModelIndex &index)
 {
     //tinna
-    ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_deleteComputer->setEnabled(true);
     ui->pushButton_edit->setEnabled(true);
 }
 
 void MainWindow::on_table_Join_clicked(const QModelIndex &index)
 {
     //tinna
-    ui->pushButton_delete->setEnabled(true);
+    ui->pushButton_deleteJoin->setEnabled(true);
     ui->pushButton_edit->setEnabled(true);
 }
 
@@ -203,56 +207,6 @@ void MainWindow::on_pushButton_add_clicked()
     int addToDatabaseReturnValue = addToDatabaseDialog.exec();
     displayAllScientists();
     displayAllComputers();
-}
-
-void MainWindow::on_pushButton_delete_clicked()
-{
-    if (ui->tabWidget->currentIndex() == 0)
-    {
-        int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
-
-        Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
-
-        bool success = scientistService.deleteScientist(currentlySelectedScientist);
-
-        if(success)
-        {
-            displayAllScientists();
-
-            ui->pushButton_delete->setEnabled(false);
-        }
-        else
-        {
-            QMessageBox::warning(this, "Error", "Scientist was not deleted. Please try again");
-            ui->pushButton_delete->setEnabled(false);
-        }
-    }
-
-    else //if(ui->tabWidget->currentIndex() == 1 /*&& ui->tabWidget->currentWidget() == pointer á computer tab*/)
-    {
-        int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
-
-        Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
-
-        bool success = computersService.deleteComputer(currentlySelectedComputer);
-
-        if(success)
-        {
-            displayAllComputers();
-
-            ui->pushButton_delete->setEnabled(false);
-        }
-        else
-        {
-            QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
-            ui->pushButton_delete->setEnabled(false);
-        }
-    }
-
-   /* else
-    {
-     //eyða úr join
-    }*/
 }
 
 void MainWindow::on_pushButton_edit_clicked()
@@ -288,4 +242,115 @@ void MainWindow::on_lineEdit_Search_textChanged(const QString &arg1)
     displayScientists(scientists);
     vector<Computer>computer = computersService.searchForComputers(userInput);
     displayComputers(computer);
+}
+
+void MainWindow::on_pushButton_delete_toggled(bool checked)
+{
+    /*if (true)
+    {
+        ui->pushButton_delete->setEnabled(true);
+
+        if (ui->tabWidget->currentIndex() == 0)
+        {
+            int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
+
+            Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+
+            bool success = scientistService.deleteScientist(currentlySelectedScientist);
+
+            if(success)
+            {
+                displayAllScientists();
+
+                ui->pushButton_delete->setEnabled(false);
+            }
+            else
+            {
+                QMessageBox::warning(this, "Error", "Scientist was not deleted. Please try again");
+                ui->pushButton_delete->setEnabled(false);
+            }
+        }
+
+        else if(ui->tabWidget->currentIndex() == 1 && ui->tabWidget->currentWidget() == pointer á computer tab)
+        {
+            int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
+
+            Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+            bool success = computersService.deleteComputer(currentlySelectedComputer);
+
+            if(success)
+            {
+                displayAllComputers();
+
+                ui->pushButton_delete->setEnabled(false);
+            }
+            else
+            {
+                QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
+                ui->pushButton_delete->setEnabled(false);
+            }
+        }
+
+        else
+        {
+         eyða úr join
+        }
+    }
+    else
+    {
+        ui->pushButton_delete->setEnabled(false);
+    }*/
+}
+
+void MainWindow::on_pushButton_deleteScientist_clicked()
+{
+    //ui->pushButton_delete->setEnabled(true);
+
+    if (ui->tabWidget->currentIndex() == 0)
+    {
+        int currentlySelectedScientistIndex = ui->table_Scientists->currentIndex().row();
+
+        Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+
+        bool success = scientistService.deleteScientist(currentlySelectedScientist);
+
+        if(success)
+        {
+            displayAllScientists();
+
+            ui->pushButton_deleteScientist->setEnabled(false);
+        }
+        else
+        {
+            QMessageBox::warning(this, "Error", "Scientist was not deleted. Please try again");
+            ui->pushButton_deleteScientist->setEnabled(false);
+        }
+    }
+}
+
+void MainWindow::on_pushButton_deleteJoin_clicked()
+{
+
+}
+
+void MainWindow::on_pushButton_deleteComputer_clicked()
+{
+    int currentlySelectedComputerIndex = ui->table_Computers->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+    bool success = computersService.deleteComputer(currentlySelectedComputer);
+
+    if(success)
+    {
+        displayAllComputers();
+
+        ui->pushButton_deleteComputer->setEnabled(false);
+    }
+    else
+    {
+        QMessageBox::warning(this, "Error", "Computer not deleted. Please try again");
+        ui->pushButton_deleteComputer->setEnabled(false);
+    }
 }

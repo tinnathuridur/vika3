@@ -143,7 +143,7 @@ std::vector<Computer> ScientistRepository::queryComputersByScientist(Scientist s
     QSqlQuery query(db);
 
     stringstream sqlQuery;
-    sqlQuery << "SELECT s.* FROM ScientistComputerConnections scc ";
+    sqlQuery << "SELECT c.* FROM ScientistComputerConnections scc ";
     sqlQuery << "JOIN Computers c ";
     sqlQuery << "ON c.id = scc.computerId ";
     sqlQuery << "WHERE scc.scientistId = " << scientist.getId();

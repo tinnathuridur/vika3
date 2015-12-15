@@ -39,8 +39,6 @@ private slots:
 
     void on_pushButton_add_clicked();
 
-    void on_pushButton_delete_clicked();
-
     void on_pushButton_edit_clicked();
 
     void on_pushButton_search_clicked();
@@ -49,7 +47,17 @@ private slots:
 
     void on_lineEdit_Search_textChanged(const QString &arg1);
 
+<<<<<<< HEAD
     void displayAllLinks();
+=======
+    void on_pushButton_delete_toggled(bool checked);
+
+    void on_pushButton_deleteScientist_clicked();
+
+    void on_pushButton_deleteJoin_clicked();
+
+    void on_pushButton_deleteComputer_clicked();
+>>>>>>> a309045742700a24099ac43079ae25b8a9ca1295
 
 private:
     Ui::MainWindow *ui;
