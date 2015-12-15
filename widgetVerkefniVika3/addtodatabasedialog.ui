@@ -197,7 +197,7 @@
   </widget>
   <widget class="QLineEdit" name="lineEdit_Scientist_Name">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -210,7 +210,7 @@
   </widget>
   <widget class="QLineEdit" name="lineEdit_Scientist_YearBorn">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -223,7 +223,7 @@
   </widget>
   <widget class="QLineEdit" name="lineEdit_Scientist_YearDied">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -301,7 +301,7 @@
   </widget>
   <widget class="QComboBox" name="comboBox_Scientist_Sex">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>

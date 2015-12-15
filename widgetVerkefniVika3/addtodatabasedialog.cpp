@@ -14,6 +14,7 @@ AddToDatabaseDialog::AddToDatabaseDialog(QWidget *parent) :
     ui(new Ui::AddToDatabaseDialog)
 {
     ui->setupUi(this);
+    ui->radioButton_Scientist->setChecked(true);
 }
 
 AddToDatabaseDialog::~AddToDatabaseDialog()
@@ -100,19 +101,31 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         bool thereWasAnError = false;
         if(name.isEmpty())
         {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must have a name!");
+            QMessageBox::information(NULL, "Error!", "Must have a name!");
             thereWasAnError = true;
         }
 
         if(yearBorn.isEmpty())
         {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born!");
+            QMessageBox::information(NULL, "Error!", "Must be born!");
+            thereWasAnError = true;
+        }
+        //Athugar hvort yearBorn og yearDied séu int tölur
+        QRegExp re("[0-9]*"); //Regular Expression skoðar hvort tölurnar séu milli 0 og 9
+        if (!re.exactMatch(yearBorn))
+        {
+            QMessageBox::information(NULL, "Error!", "Year born must be a number!");
+            thereWasAnError = true;
+        }
+        if (!re.exactMatch(yearDied))
+        {
+            QMessageBox::information(NULL, "Error!", "Year died must be a number!");
             thereWasAnError = true;
         }
         //Error skilaboð ef yearDied er áður en yearBorn
         if(yearBorn.toInt() > yearDied.toInt())
         {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born before you die!");
+            QMessageBox::information(NULL, "Error!", "Must be born before you die!");
             thereWasAnError = true;
         }
 
@@ -124,7 +137,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         //Error skilaboð ef yearDied er áður en yearBorn
         if(yearBorn.toInt() > yearDied.toInt())
         {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must be born before you die!");
+            QMessageBox::information(NULL, "Error!", "Must be born before you die!");
         }
 
 
@@ -133,6 +146,12 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         if(answer == QMessageBox::No)
         {
             return;
+        }
+        else
+        {
+            ui->lineEdit_Scientist_Name->setText("");
+            ui->lineEdit_Scientist_YearBorn->setText("");
+            ui->lineEdit_Scientist_YearDied->setText("");
         }
 
         //Setur sex'ið sem enum sexType
@@ -188,7 +207,15 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         bool thereWasAnError = false;
         if(name.isEmpty())
         {
-            QMessageBox::QMessageBox::information(NULL, "Error!", "Must have a name!");
+            QMessageBox::information(NULL, "Error!", "Must have a name!");;
+            thereWasAnError = true;
+        }
+
+        //Athugar hvort yearBuilt sé int tala
+        QRegExp re("[0-9]*"); //Regular Expression skoðar hvort tölurnar séu milli 0 og 9
+        if (!re.exactMatch(yearBuilt))
+        {
+            QMessageBox::information(NULL, "Error!", "Year built must be a number!");
             thereWasAnError = true;
         }
 
@@ -201,11 +228,17 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         }
 
 
+
         //Spyr hvort þú sért viss að þú viljir skrifa í database
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
         if(answer == QMessageBox::No)
         {
             return;
+        }
+        else
+        {
+            ui->lineEdit_Computer_Name->setText("");
+            ui->lineEdit_Computer_YearBuilt->setText("");
         }
 
         //Setur type'ið sem enum computerType
@@ -270,17 +303,34 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             thereWasAnError = true;
         }
 
+        //Athugar hvort yearBuilt sé int tala
+        QRegExp re("[0-9]*"); //Regular Expression skoðar hvort tölurnar séu milli 0 og 9
+        if (!re.exactMatch(scientistID))
+        {
+            QMessageBox::information(NULL, "Error!", "Must input number for Scientist ID!");
+            thereWasAnError = true;
+        }
+        if (!re.exactMatch(computerID))
+        {
+            QMessageBox::information(NULL, "Error!", "Must input number for Computer ID!");
+            thereWasAnError = true;
+        }
+
         if(thereWasAnError == true)
         {
             return;
         }
-
 
         //Spyr hvort þú sért viss að þú viljir skrifa í database
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
         if(answer == QMessageBox::No)
         {
             return;
+        }
+        else
+        {
+            ui->lineEdit_Join_Scientist->setText("");
+            ui->lineEdit_Join_Computer->setText("");
         }
 
         //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
