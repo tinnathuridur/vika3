@@ -335,7 +335,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Error Scientist</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="errorLabel_Computer">
@@ -348,7 +348,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Error Computer</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="errorLabel_Join">
@@ -361,7 +361,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Error Join</string>
+    <string/>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox_Computer_Type">
