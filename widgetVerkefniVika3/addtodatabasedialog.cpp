@@ -122,22 +122,21 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             QMessageBox::information(NULL, "Error!", "Year died must be a number!");
             thereWasAnError = true;
         }
+
         //Error skilaboð ef yearDied er áður en yearBorn
-        if(yearBorn.toInt() > yearDied.toInt())
+        if(!yearDied.isEmpty())
         {
-            QMessageBox::information(NULL, "Error!", "Must be born before you die!");
-            thereWasAnError = true;
+            if(yearBorn.toInt() > yearDied.toInt())
+            {
+                QMessageBox::information(NULL, "Error!", "Must be born before you die!");
+                thereWasAnError = true;
+            }
         }
+
 
         if(thereWasAnError == true)
         {
             return;
-        }
-
-        //Error skilaboð ef yearDied er áður en yearBorn
-        if(yearBorn.toInt() > yearDied.toInt())
-        {
-            QMessageBox::information(NULL, "Error!", "Must be born before you die!");
         }
 
 
@@ -164,9 +163,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             sex = sexType::female;
         }
 
-
-
-
         //Útaf því að fólk má ennþá vera lifandi þá athugar hann það hér, og notar mismunandi addScientist eftir því
         if(yearDied.isEmpty())
         {
@@ -185,7 +181,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
         {
-            ui->errorLabel_Scientist->setText("UnSuccsess");
+            ui->errorLabel_Scientist->setText("Unsuccessful");
         }
         else
         {
@@ -274,7 +270,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
         {
-            ui->errorLabel_Computer->setText("UnSuccsess");
+            ui->errorLabel_Computer->setText("Unsuccessful");
         }
         else
         {
@@ -340,7 +336,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
         {
-            ui->errorLabel_Join->setText("UnSuccsess");
+            ui->errorLabel_Join->setText("Unsuccessful");
         }
         else
         {
