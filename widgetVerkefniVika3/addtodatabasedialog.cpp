@@ -255,8 +255,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             type = computerType::other;
         }
 
-        //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
-
         if(yearBuiltEmpty)
         {
             success = computerService.addComputer(Computer(name.toStdString(), type));
@@ -265,7 +263,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         {
             success = computerService.addComputer(Computer(name.toStdString(), type, yearBuilt.toInt()));
         }
-
 
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
@@ -276,8 +273,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         {
             ui->errorLabel_Computer->setText("Succsess");
         }
-
-
     }
     else if(ui->radioButton_Join->isChecked()){
         bool success = false;
@@ -332,7 +327,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         //Vantar að laga þetta fall í repositories/computerrepository.h og .cpp þannig að það geti tekið á móti builtOrNot
         success = linkService.addLink(scientistID.toStdString(), computerID.toStdString());
 
-
         //Skilar villuskilaboðum ef ekki tókst að skrifa í database
         if(success == false)
         {
@@ -342,9 +336,6 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         {
             ui->errorLabel_Join->setText("Succsess");
         }
-
-
-
     }
 }
 

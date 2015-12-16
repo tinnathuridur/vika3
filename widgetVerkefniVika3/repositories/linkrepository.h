@@ -21,6 +21,7 @@ public:
      * @return true if it was a success, false if it was a failure
      */
     bool addLink(std::string scientistId, std::string computerId);
+
     bool deleteLink(std::string scientistId, std::string computerId);
 private:
     QSqlDatabase db;

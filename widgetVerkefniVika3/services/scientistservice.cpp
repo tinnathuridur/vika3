@@ -26,6 +26,5 @@ bool ScientistService::addScientist(Scientist scientist)
 
 bool ScientistService::deleteScientist(Scientist scientist)
 {
-    //nytt
     return scientistRepo.deleteScientist(scientist);
 }

@@ -43,7 +43,6 @@ bool LinkRepository::addLink(string scientistId, string computerId)
 
 bool LinkRepository::deleteLink(string scientistId, string computerId)
 {
-    //nytt (tinna)
     db.open();
 
     if (!db.isOpen())
@@ -56,8 +55,6 @@ bool LinkRepository::deleteLink(string scientistId, string computerId)
     stringstream sqlQuery;
     sqlQuery << "DELETE FROM ScientistComputerConnections WHERE scientistId = "
              << scientistId << " AND computerId = " << computerId;
-
-    //DELETE FROM scientistcomputerconnections WHERE scientistId = 10 AND computerId = 8;
 
     if (!query.exec(QString::fromStdString(sqlQuery.str())))
     {

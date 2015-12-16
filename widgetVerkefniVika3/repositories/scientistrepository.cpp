@@ -106,7 +106,6 @@ bool ScientistRepository::addScientist(Scientist scientist)
 
 bool ScientistRepository::deleteScientist(Scientist scientist)
 {
-    //nytt (tinna)
     db.open();
 
     if (!db.isOpen())

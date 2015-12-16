@@ -99,7 +99,6 @@ bool ComputerRepository::addComputer(Computer computer)
 
 bool ComputerRepository::deleteComputer(Computer computer)
 {
-    //nytt (tinna)
     db.open();
 
     if (!db.isOpen())

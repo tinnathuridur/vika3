@@ -29,8 +29,6 @@ private slots:
 
     void on_table_Join_clicked(const QModelIndex &index);
 
-    //void on_action_Delete_computer_triggered();
-
     void on_pushButton_add_clicked();
 
     void on_pushButton_search_clicked();
