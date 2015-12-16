@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <QString>
+#include <iostream>
 
 using namespace std;
 
@@ -53,9 +54,10 @@ bool LinkRepository::deleteLink(string scientistId, string computerId)
     QSqlQuery query(db);
 
     stringstream sqlQuery;
-    sqlQuery << "DELETE FROM ScientistsComputerConnections WHERE id = "
-             << scientistId
-             << computerId;
+    sqlQuery << "DELETE FROM ScientistComputerConnections WHERE scientistId = "
+             << scientistId << " AND computerId = " << computerId;
+
+    //DELETE FROM scientistcomputerconnections WHERE scientistId = 10 AND computerId = 8;
 
     if (!query.exec(QString::fromStdString(sqlQuery.str())))
     {
