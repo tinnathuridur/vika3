@@ -8,7 +8,8 @@
 #include "linkservice.h"
 #include "mainwindow.h"
 
-namespace Ui {
+namespace Ui
+{
 class AddToDatabaseDialog;
 }
 

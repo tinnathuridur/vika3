@@ -29,7 +29,6 @@ SOURCES += main.cpp\
     services/linkservice.cpp \
     services/scientistservice.cpp \
     utilities/utils.cpp \
-    ui/consoleui.cpp \
     addtodatabasedialog.cpp
 
 HEADERS  += mainwindow.h \
@@ -43,7 +42,6 @@ HEADERS  += mainwindow.h \
     services/scientistservice.h \
     utilities/constants.h \
     utilities/utils.h \
-    ui/consoleui.h \
     addtodatabasedialog.h
 
 FORMS    += mainwindow.ui \

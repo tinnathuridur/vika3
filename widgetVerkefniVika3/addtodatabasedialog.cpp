@@ -117,6 +117,7 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             QMessageBox::information(NULL, "Error!", "Year born must be a number!");
             thereWasAnError = true;
         }
+
         if (!re.exactMatch(yearDied))
         {
             QMessageBox::information(NULL, "Error!", "Year died must be a number!");
@@ -133,12 +134,10 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             }
         }
 
-
         if(thereWasAnError == true)
         {
             return;
         }
-
 
         //Spyr hvort þú sért viss
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
@@ -187,10 +186,9 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         {
             ui->errorLabel_Scientist->setText("Succsess");
         }
-
-
     }
-    else if(ui->radioButton_Computer->isChecked()){
+    else if(ui->radioButton_Computer->isChecked())
+    {
         enum computerType type;
         bool success = false;
         bool yearBuiltEmpty = false;
@@ -219,11 +217,11 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
         {
             return;
         }
-        if(yearBuilt.isEmpty()){
+
+        if(yearBuilt.isEmpty())
+        {
             yearBuiltEmpty = true;
         }
-
-
 
         //Spyr hvort þú sért viss að þú viljir skrifa í database
         int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
@@ -274,7 +272,8 @@ void AddToDatabaseDialog::on_pushButton_AddToDatabase_clicked()
             ui->errorLabel_Computer->setText("Succsess");
         }
     }
-    else if(ui->radioButton_Join->isChecked()){
+    else if(ui->radioButton_Join->isChecked())
+    {
         bool success = false;
 
         QString scientistID = ui->lineEdit_Join_Scientist->text();
