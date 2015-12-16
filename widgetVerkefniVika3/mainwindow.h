@@ -5,6 +5,7 @@
 #include "models/scientist.h"
 #include "services/scientistservice.h"
 #include "services/computerservice.h"
+#include "services/linkservice.h"
 #include <vector>
 
 
@@ -21,9 +22,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_action_AddScientist_triggered();
-
-    //void on_action_DeleteScientist_triggered();
 
     void on_table_Scientist_clicked(const QModelIndex &index);
 
@@ -49,6 +47,8 @@ private slots:
 
     void on_pushButton_deleteComputer_clicked();
 
+    void displayLinks(std::vector<Computer> computers);
+
 private:
     Ui::MainWindow *ui;
 
@@ -63,6 +63,7 @@ private:
 
     ComputerService computersService;
     ScientistService scientistService;
+    LinkService linkService;
 };
 
 #endif // MAINWINDOW_H

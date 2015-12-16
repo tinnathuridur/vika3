@@ -4,12 +4,14 @@
 #include "models/scientist.h"
 #include "services/scientistservice.h"
 #include "services/computerservice.h"
+#include "services/linkservice.h"
 #include "addtodatabasedialog.h"
 #include <vector>
 #include "repositories/scientistrepository.h"
 #include "repositories/computerrepository.h"
 #include <QMessageBox>
 #include <iostream>
+#include "utilities/utils.h"
 
 using namespace std;
 
@@ -51,14 +53,21 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)
         QString sex = QString::number(currentScientist.getSex());
         QString yearBorn = QString::number(currentScientist.getYearBorn());
         QString yearDied = QString::number(currentScientist.getYearDied());
-            if(sex == "1")
-            {
-                sexDisplay = "Male";
-            }
-            else
-            {
-                sexDisplay = "Female";
-            }
+
+        if(yearDied == "13337")
+        {
+            yearDied = "Still Alive!";
+        }
+
+
+        if(sex == "1")
+        {
+            sexDisplay = "Male";
+        }
+        else
+        {
+            sexDisplay = "Female";
+        }
 
         ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(Id));
         ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
@@ -95,6 +104,12 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         QString yearBuilt = QString::number(currentComputers.getYearBuilt());
         QString wasBuilt = QString::number(currentComputers.wasBuilt());
 
+        if(yearBuilt == "13337")
+        {
+            yearBuilt = "Not Built";
+        }
+
+
         if(wasBuilt == "1")
         {
             wasItBuilt = "Yes";
@@ -112,6 +127,44 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     }
 
     currentlyDisplayedComputers = computers;
+}
+
+void MainWindow::displayLinks(std::vector<Computer> computers)
+{
+    ui->table_Join->clearContents();
+    ui->table_Join->verticalHeader()->setVisible(false);
+
+    //Stilla línufjöldann
+    int rowCount = 0;
+    for(unsigned int i = 0; i < computers.size(); i++)
+    {
+        std::vector<Scientist> scientistAll = computers.at(i).getScientists();
+        rowCount = rowCount + scientistAll.size();
+    }
+
+    ui->table_Join->setRowCount(rowCount);
+
+    int row = 0;//Heldur utan um í hvaða röð forritið er komið
+    //Skrifa út eftirfarandi tengingar
+    for(unsigned int i = 0; i < computers.size(); i++)
+    {
+
+        std::vector<Scientist> scientists = computers.at(i).getScientists();
+
+        for(unsigned int j = 0; j < scientists.size(); j++)
+        {
+            Computer currentComputer = computers.at(i);
+            Scientist currentScientist = scientists.at(j);
+
+            QString scientistName = QString::fromStdString(currentScientist.getName());
+            QString computerName = QString::fromStdString(currentComputer.getName());
+
+            ui->table_Join->setItem(row, 0, new QTableWidgetItem(scientistName));
+            ui->table_Join->setItem(row, 1, new QTableWidgetItem(computerName));
+
+            row++;
+        }
+    }
 }
 
 void MainWindow::displayAllScientists()
@@ -160,13 +213,6 @@ void MainWindow::displayAllLinks()
         row++;
         }
     }
-}
-
-void MainWindow::on_action_AddScientist_triggered()
-{
-    //tryggvi
-    AddToDatabaseDialog addToDatabaseDialog;
-    int addToDatabaseReturnValue = addToDatabaseDialog.exec();
 }
 
 void MainWindow::on_table_Scientist_clicked(const QModelIndex &index)
@@ -221,6 +267,9 @@ void MainWindow::on_lineEdit_Search_textChanged(const QString &arg1)
     displayScientists(scientists);
     vector<Computer>computer = computersService.searchForComputers(userInput);
     displayComputers(computer);
+    vector<Computer>computera = computersService.searchForComputers(userInput);
+    displayLinks(computera);
+
 }
 
 void MainWindow::on_pushButton_deleteScientist_clicked()
@@ -246,7 +295,52 @@ void MainWindow::on_pushButton_deleteScientist_clicked()
 
 void MainWindow::on_pushButton_deleteJoin_clicked()
 {
+    //Heldur utan um í hvaða röð forlykkjurnar eru komnar
+    int row = 0;
+    //Finnur röðina sem er valin
+    int currentSelectedJoinIndex = ui->table_Join->currentIndex().row();
 
+    //Ef join tabinn er valinn
+    if (ui->tabWidget->currentIndex() == 2){
+
+        //Nær í allar tölvur og raðar þeim í id röð í vector
+        std::vector<Computer> computersAll = computersService.getAllComputers("id", true);
+
+        //Rúllar í gegnum alla join töfluna, til að finna sömu röð og er valin
+        for(unsigned int i = 0; i < computersAll.size(); i++)
+        {
+            //Nær í allar vísindamenn sem eru tengdir tölvunni í sæti i í vectornum
+            std::vector<Scientist> scientistAll = computersAll.at(i).getScientists();
+
+            //Rúllar í gegnum Vísindamennina tengdir þeirri tölvu
+            for(unsigned int j = 0; j < scientistAll.size(); j++)
+            {
+            //Setur alltaf tölvuna og vísindamanninn sem er valinn í vector
+            Computer currentComputer = computersAll.at(i);
+            Scientist currentScientist = scientistAll.at(j);
+
+            //Þegar röðin sem er valin og röðin sem er verið að rúlla uppí er sú sama
+            if(row == currentSelectedJoinIndex)
+            {
+                //Náum í Id'in útúr objectunum
+                int scientistId = currentScientist.getId();
+                int computerId = currentComputer.getId();
+
+                //Hendum þeim yfir í string
+                string scientistIdString = utils::intToString(scientistId);
+                string computerIdString = utils::intToString(computerId);
+
+                //Og sendum inní delete fallið
+                linkService.deleteLink(scientistIdString, computerIdString);
+            }
+            //Hækka um röð ef þetta var ekki röðin sem var valin
+            row++;
+            }
+        displayAllLinks();
+        }
+
+
+    }
 }
 
 void MainWindow::on_pushButton_deleteComputer_clicked()
